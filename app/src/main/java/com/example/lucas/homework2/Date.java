@@ -69,16 +69,16 @@ public class Date extends AppCompatActivity {
         eventDao = daoSession.getCalEventDao();
 
         if (eventDao.queryBuilder().where(
-                CalEventDao.Properties.Display.eq(true)).list() == null)
+                EventDao.Properties.Display.eq(true)).list() == null)
         {
             closeReopenDatabase();
         }
         eventListFromDB = eventDao.queryBuilder().where(
-                CalEventDao.Properties.Display.eq(true)).list();
+                EventDao.Properties.Display.eq(true)).list();
 
         if (eventListFromDB != null) {
 
-            for (CalEvent event : eventListFromDB)
+            for (Event event : eventListFromDB)
             {
                 if (event == null)
                 {
@@ -123,7 +123,7 @@ public class Date extends AppCompatActivity {
     public void newEvent(String name, String location, String startTime, String endTime) {
         Random rand = new Random();
 
-        CalEvent newEvent = new CalEvent(rand.nextLong(), name, location, startTime, endTime, this.dateString, true);
+        Event newEvent = new Event(rand.nextLong(), name, location, startTime, endTime, this.dateString, true);
 
         eventDao.insert(newEvent);
         eventList.add(newEvent.getName() + " @ " + newEvent.getLocation()
@@ -138,7 +138,7 @@ public class Date extends AppCompatActivity {
     public void deleteEvent(int index) {
         String stringToDelete = eventList.get(index);
 
-        for (CalEvent event : eventListFromDB)
+        for (Event event : eventListFromDB)
         {
             String curString = event.getName() + " @ " + event.getLocation()
                     + "\n" + event.getStartTime() + " - " + event.getEndTime();
