@@ -20,12 +20,12 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(SQLiteDatabase db, boolean ifNotExists) {
-        CalEventDao.createTable(db, ifNotExists);
+        EventDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(SQLiteDatabase db, boolean ifExists) {
-        CalEventDao.dropTable(db, ifExists);
+        EventDao.dropTable(db, ifExists);
     }
 
     public static abstract class OpenHelper extends SQLiteOpenHelper {
@@ -57,7 +57,7 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(SQLiteDatabase db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(CalEventDao.class);
+        registerDaoClass(EventDao.class);
     }
 
     public DaoSession newSession() {

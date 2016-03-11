@@ -20,8 +20,8 @@ public class Date extends AppCompatActivity {
     SQLiteDatabase eventDB;
     DaoMaster daoMaster;
     DaoSession daoSession;
-    CalEventDao eventDao;
-    List<CalEvent> eventListFromDB;
+    EventDao eventDao;
+    List<Event> eventListFromDB;
 
 
     private int month, day, year;
