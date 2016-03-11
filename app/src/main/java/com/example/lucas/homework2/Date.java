@@ -144,7 +144,6 @@ public class Date extends AppCompatActivity {
                     + "\n" + event.getStartTime() + " - " + event.getEndTime();
 
             if (curString.equals(stringToDelete)) {
-                //todo DELETE THAT SHIT
                 eventDao.delete(event);
                 Toast.makeText(this, "Deleting!", Toast.LENGTH_LONG).show();
                 eventList.remove(index);
